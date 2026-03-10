@@ -7,7 +7,7 @@ sudo cp update-discord.sh /usr/local/bin/update-discord.sh
 sudo chmod +x /usr/local/bin/update-discord.sh
 ```
 
-**2. Allow it to run without a password prompt** (add this via `sudo visudo`):
+2. (Optional) Allow it to run without a password prompt (add this via `sudo visudo`):
 ```
 yourusername ALL=(ALL) NOPASSWD: /usr/bin/tar, /usr/bin/tee, /usr/bin/touch, /usr/bin/chmod
 ```
@@ -32,6 +32,6 @@ cat /var/log/discord-update.log        # human-readable log
 
 It sends a HEAD request to the Discord download URL and reads the redirect URL, which contains the version number (e.g. discord-0.0.123.tar.gz)
 It compares that against /opt/Discord/.installed_version (a small cache file it creates after each update)
-Only if versions differ does it download the ~100MB tarball
+Only if versions differ does it download the new tarball
 
 The timer runs daily at 09:00, but with Persistent=true — so if your machine was off at that time, it catches up on next boot. No service interruption since the running Discord process keeps its old file handles until you restart it.

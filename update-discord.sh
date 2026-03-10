@@ -37,7 +37,7 @@ if [[ -f "$BINARY" ]]; then
     if [[ -f "$VERSION_FILE" ]]; then
         INSTALLED_VERSION=$(cat "$VERSION_FILE")
     else
-        # TODO: 
+        # TODO: Using the --version flag starts discord and therefore the script wont continue 
         # Fall back to parsing the binary's --version output
         INSTALLED_VERSION=$("$BINARY" --version 2>/dev/null | grep -oP '\d+\.\d+\.\d+' | head -1 || echo "unknown")
     fi
