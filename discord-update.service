@@ -1,0 +1,12 @@
+[Unit]
+Description=Discord Auto-Updater
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/update-discord.sh
+# Run as your user so sudo prompts use your sudoers rules
+# If you add a NOPASSWD rule (see README), this can also run as root directly.
+StandardOutput=journal
+StandardError=journal

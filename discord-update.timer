@@ -1,0 +1,13 @@
+[Unit]
+Description=Daily Discord Update Check
+
+[Timer]
+# Run once per day
+OnCalendar=*-*-* 09:47:00
+# If the system was off at the set time, run as soon as it is back online
+Persistent=true
+# Add a random delay because it sounds like a good practice (300 s = 5 min)
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target
